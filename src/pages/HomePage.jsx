@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useFavourites } from "../hooks/useFavourites";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function HomePage() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { toggleFavourite, isFavourite } = useFavourites();
 
   useEffect(() => {
     async function fetchGames() {
@@ -31,20 +34,37 @@ function HomePage() {
       <h1 className="text-3xl font-bold mb-4">Game Library</h1>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {games.map((game) => (
-          <Link
-            to={`/games/${game.id}`}
+          <div
             key={game.id}
-            className="bg-white p-4 rounded shadow hover:shadow-lg transition block"
-          >
-            <img
-              src={game.image}
-              alt={game.title}
-              className="w-full h-48 object-cover mb-2 rounded"
-            />
-            <h2 className="text-xl font-semibold">{game.title}</h2>
-            <p>Year: {game.released}</p>
-            <p>Genre: {game.genre}</p>
-          </Link>
+            className="relative bg-white p-4 rounded shadow hover:shadow-lg transition"
+          >   
+            <Link to={`/games/${game.id}`} className="block">
+              <img
+                src={game.image}
+                alt={game.title}
+                className="w-full h-48 object-cover mb-2 rounded"
+              />
+              <h2 className="text-xl font-semibold">{game.title}</h2>
+              <p>Year: {game.released}</p>
+              <p>Genre: {game.genre}</p>
+
+              <button
+              onClick={(e) => {
+                e.preventDefault(); 
+                toggleFavourite(game.id);
+              }}
+              className="absolute bottom-2 text-2xl right-2 text-2xl"
+              aria-label={`Toggle favourite for ${game.title}`}
+            >
+              {isFavourite(game.id) ? (
+                <FaHeart className="text-pink-400" />
+              ) : (
+                <FaHeart className="text-black-400" />
+              )}
+            </button>
+            </Link>
+           
+          </div>
         ))}
       </div>
     </div>
@@ -52,3 +72,4 @@ function HomePage() {
 }
 
 export default HomePage;
+
