@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [games, setGames] = useState([]);
@@ -9,7 +10,7 @@ function HomePage() {
     async function fetchGames() {
       try {
         const response = await fetch("https://api.noroff.dev/api/v1/old-games");
-        if (!response.ok) throw new Error("Something wrong with the API call");
+        if (!response.ok) throw new Error("Something went wrong with the API call");
         const data = await response.json();
         setGames(data);
       } catch (err) {
@@ -27,10 +28,14 @@ function HomePage() {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold mb-4">Game libary</h1>
+      <h1 className="text-3xl font-bold mb-4">Game Library</h1>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {games.map((game) => (
-          <div key={game.id} className="bg-white p-4 rounded shadow">
+          <Link
+            to={`/games/${game.id}`}
+            key={game.id}
+            className="bg-white p-4 rounded shadow hover:shadow-lg transition block"
+          >
             <img
               src={game.image}
               alt={game.title}
@@ -39,7 +44,7 @@ function HomePage() {
             <h2 className="text-xl font-semibold">{game.title}</h2>
             <p>Year: {game.released}</p>
             <p>Genre: {game.genre}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
