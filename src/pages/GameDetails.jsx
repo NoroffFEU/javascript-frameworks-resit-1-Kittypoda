@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function GameDetails() {
@@ -39,7 +39,17 @@ function GameDetails() {
       <p className="mb-2"><strong>Year Released:</strong> {game.released}</p>
       <p className="mb-2"><strong>Genre:</strong> {game.genre}</p>
       <p className="mb-4"><strong>Description:</strong> {game.description}</p>
+  <button>
+      <Link
+        to="/"
+        className="inline-block mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+      >
+        Back to Home
+      </Link>
+    </button>
+
     </div>
+
   );
 }
 
