@@ -13,10 +13,10 @@ function GameDetails() {
   useEffect(() => {
     async function fetchGame() {
       try {
-        const response = await fetch(`https://api.noroff.dev/api/v1/old-games/${id}`);
+        const response = await fetch(`https://v2.api.noroff.dev/old-games/${id}`);
         if (!response.ok) throw new Error("Failed to fetch game details.");
         const data = await response.json();
-        setGame(data);
+        setGame(data.data); // viktig: data er inni "data"-feltet
       } catch (err) {
         setError(err.message);
       } finally {
@@ -32,30 +32,29 @@ function GameDetails() {
   if (!game) return <p>Game not found.</p>;
 
   return (
-    <div className="p-4">
-      <h1 className="text-3xl font-bold mb-2">{game.title}</h1>
+    <div className="p-4 relative">
+      <h1 className="text-3xl font-bold mb-2">{game.name}</h1>
 
-
-      <img
-        src={game.image}
-        alt={game.title}
-        className="w-full max-w-md mb-4 rounded"
-      />
-
-<button
+      <button
         onClick={() => toggleFavourite(game.id)}
-        className="absolute right-4 text-3xl mb-4"
-        aria-label={`Toggle favourite for ${game.title}`}
+        className="absolute top-4 right-4 text-3xl"
+        aria-label={`Toggle favourite for ${game.name}`}
       >
         {isFavourite(game.id) ? (
           <FaHeart className="text-pink-400" />
         ) : (
-          <FaHeart className="text-black-400" />
+          <FaRegHeart className="text-gray-400" />
         )}
       </button>
 
+      <img
+        src={game.image.url}
+        alt={game.image.alt}
+        className="w-full max-w-md mb-4 rounded"
+      />
+
       <p className="mb-2"><strong>Year Released:</strong> {game.released}</p>
-      <p className="mb-2"><strong>Genre:</strong> {game.genre}</p>
+      <p className="mb-2"><strong>Genre:</strong> {game.genre.join(", ")}</p>
       <p className="mb-4"><strong>Description:</strong> {game.description}</p>
 
       <Link

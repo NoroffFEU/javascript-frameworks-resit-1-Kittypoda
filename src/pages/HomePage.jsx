@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useFavourites } from "../hooks/useFavourites";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function HomePage() {
   const [games, setGames] = useState([]);
@@ -12,10 +12,10 @@ function HomePage() {
   useEffect(() => {
     async function fetchGames() {
       try {
-        const response = await fetch("https://api.noroff.dev/api/v1/old-games");
+        const response = await fetch("https://v2.api.noroff.dev/old-games");
         if (!response.ok) throw new Error("Something went wrong with the API call");
         const data = await response.json();
-        setGames(data);
+        setGames(data.data); // <-- viktig!
       } catch (err) {
         setError(err.message);
       } finally {
@@ -37,33 +37,32 @@ function HomePage() {
           <div
             key={game.id}
             className="relative bg-white p-4 rounded shadow hover:shadow-lg transition"
-          >   
+          >
             <Link to={`/games/${game.id}`} className="block">
               <img
-                src={game.image}
-                alt={game.title}
+                src={game.image.url}
+                alt={game.image.alt}
                 className="w-full h-48 object-cover mb-2 rounded"
               />
-              <h2 className="text-xl font-semibold">{game.title}</h2>
+              <h2 className="text-xl font-semibold">{game.name}</h2>
               <p>Year: {game.released}</p>
-              <p>Genre: {game.genre}</p>
+              <p>Genre: {game.genre.join(", ")}</p>
+            </Link>
 
-              <button
+            <button
               onClick={(e) => {
-                e.preventDefault(); 
+                e.preventDefault();
                 toggleFavourite(game.id);
               }}
-              className="absolute bottom-2 text-2xl right-2 text-2xl"
-              aria-label={`Toggle favourite for ${game.title}`}
+              className="absolute bottom-2 right-2 text-2xl"
+              aria-label={`Toggle favourite for ${game.name}`}
             >
               {isFavourite(game.id) ? (
                 <FaHeart className="text-pink-400" />
               ) : (
-                <FaHeart className="text-black-400" />
+                <FaRegHeart className="text-gray-400" />
               )}
             </button>
-            </Link>
-           
           </div>
         ))}
       </div>
@@ -72,4 +71,5 @@ function HomePage() {
 }
 
 export default HomePage;
+
 
