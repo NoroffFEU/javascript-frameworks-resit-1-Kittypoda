@@ -17,7 +17,8 @@ export default {
       gray:  "#3F3F3F",
     }, 
     fontFamily: {
-      jura: ['Jura', 'sans-serif'], 
+      jura: ['Jura', 'sans-serif'],
+      press: ['"Press Start 2P"', 'system-ui'],
     },   
     },
     },
