@@ -38,20 +38,22 @@ function HomePage() {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold mb-4">Game Library</h1>
+      
 
       <input
         type="text"
         placeholder="Search games..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-6 p-2 border border-gray-300 rounded w-full max-w-md"
+        className="mb-2 md:ml-20 p-2 border border-gray-300 rounded w-full max-w-md"
       />
+
+<h1 className="text-xl font-bold pl-2  md:pl-20 pt-8">Game Library</h1>
 
       {filteredGames.length === 0 ? (
         <p>No games found matching "{searchTerm}".</p>
       ) : (
-        <div className="px-20 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div className=" px-2 md:px-20 py-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {filteredGames.map((game) => (
             <GameCard
               key={game.id}
