@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 
 export function useFavourites() {
-  const [favourites, setFavourites] = useState([]);
-
-  useEffect(() => {
+  const [favourites, setFavourites] = useState(() => {
+    // Hent fra localStorage ved første render
     const stored = localStorage.getItem("favourites");
-    if (stored) {
-      setFavourites(JSON.parse(stored));
-    }
-  }, []);
+    return stored ? JSON.parse(stored) : [];
+  });
 
   useEffect(() => {
+    // Oppdater localStorage når listen endres
     localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
 
   function toggleFavourite(id) {
     setFavourites((prev) =>
-      prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id]
+      prev.includes(id)
+        ? prev.filter((fav) => fav !== id)
+        : [...prev, id]
     );
   }
 

@@ -8,14 +8,16 @@ function Header() {
         🎮 Level up Lounge
       </Link>
 
-      <button
+      <Link
+        to="/favourites"
         className="text-2xl text-gray-600 hover:text-pink-500 transition"
         aria-label="View favourites"
       >
         <FaHeart />
-      </button>
+      </Link>
     </header>
   );
 }
 
 export default Header;
+
