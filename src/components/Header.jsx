@@ -11,14 +11,15 @@ function Header() {
         className="md:w-52 w-40 h-auto"
         />
       </Link>
-
+<button className="bg-gray p-2 rounded border border-yellow shadow-btnsolid">
       <Link
         to="/favourites"
-        className="text-4xl text-yellow transition"
+        className="text-2xl text-pink transition"
         aria-label="View favourites"
       >
         <FaHeart />
       </Link>
+      </button>
     </header>
   );
 }

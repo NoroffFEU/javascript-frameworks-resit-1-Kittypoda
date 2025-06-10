@@ -50,7 +50,7 @@ function HomePage() {
       />
 <Link
       to="/genre"
-      className="inline-block border border-yellow rounded ml-4 px-4 py-3 bg-gray text-sm shadow-btnsolid hover:bg-pink transition"
+      className="inline-block border border-yellow rounded md:ml-4 mt-4 px-4 py-3 bg-gray text-sm shadow-btnsolid hover:bg-pink transition"
     >
       Genres
     </Link>
