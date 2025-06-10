@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
 export function useFavourites() {
   const [favourites, setFavourites] = useState(() => {
-    // Hent fra localStorage ved første render
     const stored = localStorage.getItem("favourites");
     return stored ? JSON.parse(stored) : [];
   });
 
   useEffect(() => {
-    // Oppdater localStorage når listen endres
     localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
 
   function toggleFavourite(id) {
-    setFavourites((prev) =>
-      prev.includes(id)
+    setFavourites((prev) => {
+      const isAlreadyFavourite = prev.includes(id);
+      const updated = isAlreadyFavourite
         ? prev.filter((fav) => fav !== id)
-        : [...prev, id]
-    );
+        : [...prev, id];
+
+      if (!arraysEqual(prev, updated)) {
+        toast[isAlreadyFavourite ? "error" : "success"](
+          isAlreadyFavourite ? "Removed from favourites" : "Added to favourites"
+        );
+      }
+
+      return updated;
+    });
   }
 
   function isFavourite(id) {
@@ -25,4 +33,9 @@ export function useFavourites() {
   }
 
   return { favourites, toggleFavourite, isFavourite };
+}
+
+// 👇 Denne MÅ ligge utenfor useFavourites!
+function arraysEqual(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
 }

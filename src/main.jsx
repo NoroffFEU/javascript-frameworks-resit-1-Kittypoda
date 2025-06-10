@@ -3,20 +3,20 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import GameDetails from "./pages/GameDetails";
-import FavouritesPage from "./pages/FavouritesPage"; // ← Legg til denne
+import FavouritesPage from "./pages/FavouritesPage";
 import "./index.css";
 import Header from "./components/Header";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/games/:id" element={<GameDetails />} />
-        <Route path="/favourites" element={<FavouritesPage />} /> {/* ← Ny rute */}
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Header />
+    <Toaster position="bottom-right" reverseOrder={false} />
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/games/:id" element={<GameDetails />} />
+      <Route path="/favourites" element={<FavouritesPage />} />
+    </Routes>
+  </BrowserRouter>
 );
 
