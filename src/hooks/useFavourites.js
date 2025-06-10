@@ -35,7 +35,6 @@ export function useFavourites() {
   return { favourites, toggleFavourite, isFavourite };
 }
 
-// 👇 Denne MÅ ligge utenfor useFavourites!
 function arraysEqual(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);
 }

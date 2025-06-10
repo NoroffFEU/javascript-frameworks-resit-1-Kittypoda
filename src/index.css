@@ -5,5 +5,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Press+Start+2P&display=swap');
 
 body {
-  @apply bg-gray text-yellow font-jura;
+  @apply bg-gray text-yellow font-jura h-full overflow-x-hidden;
 }
