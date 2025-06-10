@@ -14,7 +14,7 @@ function Header() {
 
       <Link
         to="/favourites"
-        className="text-4xl text-pink transition"
+        className="text-4xl text-yellow transition"
         aria-label="View favourites"
       >
         <FaHeart />

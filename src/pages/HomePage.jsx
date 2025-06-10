@@ -42,13 +42,13 @@ function HomePage() {
 
       <input
         type="text"
-        placeholder="Search games..."
+        placeholder="Search games.."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-2 md:ml-20 p-2 border border-gray-300 rounded w-full max-w-md"
+        className="mb-2 md:ml-20 p-3 border placeholder-yellow border-yellow focus:outline-none focus:ring-0 focus:border-pink shadow-btnsolid text-sm rounded w-full max-w-md bg-gray"
       />
 
-<h1 className="text-xl font-bold pl-2  md:pl-20 pt-8">Game Library</h1>
+<h1 className="text-md pl-2  md:pl-20 pt-8">Game Library</h1>
 
       {filteredGames.length === 0 ? (
         <p>No games found matching "{searchTerm}".</p>
