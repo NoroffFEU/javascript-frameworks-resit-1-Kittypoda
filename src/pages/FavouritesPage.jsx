@@ -32,9 +32,9 @@ function FavouritesPage() {
   if (games.length === 0) return <p>You haven't added any favourites yet.</p>;
 
   return (
-    <div className="p-4">
-      <h1 className="text-3xl font-bold mb-4">My Favourites</h1>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <div className="px-4 md:px-20 pt-10 pb-20">
+      <h1 className="text-xl mb-4">My Favourites</h1>
+      <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
       {games.map((game) => (
   <GameCard
     key={game.id}
