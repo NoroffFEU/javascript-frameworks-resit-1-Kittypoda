@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
+import LevelLogo from "../assets/logo.png";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between px-4 py-3 bg-white shadow-md mb-6">
+    <header className="flex items-center justify-between px-4 py-3 mb-6">
       <Link to="/" className="text-2xl font-bold">
-        🎮 Level up Lounge
+        <img src={LevelLogo}
+        alt="Level up Lounge logo" 
+        className="w-40 h-auto"
+        />
       </Link>
 
       <Link
         to="/favourites"
-        className="text-2xl text-gray-600 hover:text-pink-500 transition"
+        className="text-4xl text-pink transition"
         aria-label="View favourites"
       >
         <FaHeart />
