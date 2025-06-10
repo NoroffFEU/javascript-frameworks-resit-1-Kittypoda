@@ -9,8 +9,12 @@ export default {
       colors: {
       pink: "#DCB7BD",   
       purple: "#825293",    
-      yellow: "#F9EED6", 
-    },    
+      yellow: "#F9EED6",
+      gray:  "#3F3F3F",
+    }, 
+    fontFamily: {
+      jura: ['Jura', 'sans-serif'], 
+    },   
     },
     },
 
