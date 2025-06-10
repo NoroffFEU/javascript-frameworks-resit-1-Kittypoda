@@ -72,7 +72,7 @@ function GameDetails() {
 
       <Link
         to="/"
-        className="inline-block mt-4 border-2 w-32 border-purple px-4 py-2 bg-yellow text-black text-sm shadow-btnsolid hover:bg-pink "
+        className="inline-block mt-4 mb-20 border-2 w-32 rounded border-purple px-4 py-2 bg-yellow text-black text-sm shadow-btnsolid hover:bg-pink "
       >
         Back to Home
       </Link>

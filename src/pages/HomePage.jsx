@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useFavourites } from "../hooks/useFavourites";
 import GameCard from "../components/GameCard";
+import GameBoy from "../assets/gameboy.jpg";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [games, setGames] = useState([]);
@@ -38,15 +40,20 @@ function HomePage() {
 
   return (
     <div className="p-4">
-      
 
       <input
         type="text"
         placeholder="Search games.."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-2 md:ml-20 p-3 border placeholder-yellow border-yellow focus:outline-none focus:ring-0 focus:border-pink shadow-btnsolid text-sm rounded w-full max-w-md bg-gray"
+        className="mt-4 md:ml-20 p-3 border placeholder-yellow border-yellow focus:outline-none focus:ring-0 focus:border-pink shadow-btnsolid text-sm rounded w-full max-w-md bg-gray"
       />
+<Link
+      to="/genre"
+      className="inline-block border border-yellow rounded ml-4 px-4 py-3 bg-gray text-sm shadow-btnsolid hover:bg-pink transition"
+    >
+      Genres
+    </Link>
 
 <h1 className="text-md pl-2  md:pl-20 pt-8">Game Library</h1>
 

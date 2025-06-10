@@ -7,6 +7,7 @@ import FavouritesPage from "./pages/FavouritesPage";
 import "./index.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Genre from "./pages/GenrePage";
 import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/" element={<App />} />
       <Route path="/games/:id" element={<GameDetails />} />
       <Route path="/favourites" element={<FavouritesPage />} />
+      <Route path="/genre" element={<Genre />} />
     </Routes>
     <Footer />
   </BrowserRouter>

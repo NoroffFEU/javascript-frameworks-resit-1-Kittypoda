@@ -8,7 +8,7 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
         <img
           src={game.image.url}
           alt={game.image.alt}
-          className="w-full h-80 object-cover mb-2 shadow-solid"
+          className="w-full h-80 object-cover rounded-xl mb-2 shadow-solid"
         />
 
         <button
@@ -33,7 +33,7 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
 
       <Link
         to={`/games/${game.id}`}
-        className="inline-block mt-4 border-2 border-purple px-4 py-2 bg-yellow text-black text-sm shadow-btnsolid hover:bg-pink transition"
+        className="inline-block mt-4 border-2 border-purple rounded px-4 py-2 bg-yellow text-black text-sm shadow-btnsolid hover:bg-pink transition"
       >
         Read more
       </Link>
