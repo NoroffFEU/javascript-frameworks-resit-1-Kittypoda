@@ -51,7 +51,7 @@ function HomePage() {
       {filteredGames.length === 0 ? (
         <p>No games found matching "{searchTerm}".</p>
       ) : (
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="px-20 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {filteredGames.map((game) => (
             <GameCard
               key={game.id}
