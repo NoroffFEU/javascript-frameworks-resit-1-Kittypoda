@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFavourites } from "../hooks/useFavourites";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import GameCard from "../components/GameCard";
 
 function GameDetails() {
   const { id } = useParams();
