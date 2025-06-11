@@ -29,7 +29,7 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
         </button>
       </div>
 
-      <h2 className="text-xl font-semibold pt-4">{game.name}</h2>
+      <h2 className=" font-press pt-4">{game.name}</h2>
       <p>Year: {game.released}</p>
       <p>Genre: {game.genre.join(", ")}</p>
 

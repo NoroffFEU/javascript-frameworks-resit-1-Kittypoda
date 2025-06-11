@@ -35,7 +35,6 @@ function GameDetails() {
 
   return (
     <div className="p-4 relative flex flex-col justify-center md:px-20 lg:px-56">
-      <h1 className="text-4xl mb-2">{game.name}</h1>
 
       <div className="relative w-full max-w-[600px] aspect-[4/3] mb-2 shadow-solid">
   <img
@@ -60,8 +59,8 @@ function GameDetails() {
   </button>
 </div>
 
-
-      <p className="mb-2 pt-6">
+<h1 className="text-xl font-press mb-2 pt-6">{game.name}</h1>
+      <p className="">
         <strong>Year Released:</strong> {game.released}
       </p>
       <p className="mb-2">
