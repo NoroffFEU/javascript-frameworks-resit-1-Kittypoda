@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        solid: '15px 15px 0 rgba(0, 0, 0, 0.5)',
-        btnsolid: '10px 10px 0 rgba(0, 0, 0, 0.5)',
+        solid: '15px 15px 0 #292929',
+        btnsolid: '10px 10px 0 #292929',
       },
       colors: {
       pink: "#DCB7BD",   
