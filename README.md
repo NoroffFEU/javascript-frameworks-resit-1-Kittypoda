@@ -24,7 +24,7 @@ This project was created as part of a resit assignment for the **JavaScript Fram
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/level-up-lounge.git
+   git clone https://github.com/NoroffFEU/javascript-frameworks-resit-1-Kittypoda.git
    cd level-up-lounge
 
 2. **Install dependencies:**
