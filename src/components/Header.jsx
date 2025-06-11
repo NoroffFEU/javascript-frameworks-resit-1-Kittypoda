@@ -3,6 +3,9 @@ import { FaHeart } from "react-icons/fa";
 import LevelLogo from "../assets/logo.png";
 
 function Header() {
+
+  if (location.pathname === "/") return null;
+  
   return (
     <header className="flex items-center justify-between px-4 md:px-20 pt-8 mb-6">
       <Link to="/" className="text-2xl font-bold">
