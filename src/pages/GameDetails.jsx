@@ -45,7 +45,7 @@ function GameDetails() {
             e.preventDefault();
             toggleFavourite(game.id);
           }}
-          className="absolute bottom-4 right-4 text-4xl text-xl rounded border border-yellow bg-gray p-2 shadow-btnsolid"
+          className="absolute bottom-4 right-4 rounded border border-yellow bg-gray p-2 text-4xl text-xl shadow-btnsolid"
           aria-label={`Toggle favourite for ${game.name}`}
         >
           {isFavourite(game.id) ? (

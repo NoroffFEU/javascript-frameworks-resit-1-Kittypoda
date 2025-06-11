@@ -18,7 +18,7 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
             e.preventDefault();
             toggleFavourite(game.id);
           }}
-          className="absolute bottom-4 right-4 text-xl rounded border border-yellow bg-gray p-2 shadow-btnsolid"
+          className="absolute bottom-4 right-4 rounded border border-yellow bg-gray p-2 text-xl shadow-btnsolid"
           aria-label={`Toggle favourite for ${game.name}`}
         >
           {isFavourite(game.id) ? (
