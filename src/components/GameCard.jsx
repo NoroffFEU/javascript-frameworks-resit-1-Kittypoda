@@ -5,15 +5,17 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
   return (
     <div className="">
       <div className="relative">
-        <img
-          src={game.image.url}
-          alt={game.image.alt}
-          className="w-full h-80 object-cover rounded-xl mb-2 shadow-solid"
-        />
+        <Link to={`/games/${game.id}`} className="block">
+          <img
+            src={game.image.url}
+            alt={game.image.alt}
+            className="w-full h-80 object-cover rounded-xl mb-2 shadow-solid"
+          />
+        </Link>
 
         <button
           onClick={(e) => {
-            e.preventDefault();
+            e.preventDefault(); 
             toggleFavourite(game.id);
           }}
           className="absolute bottom-2 right-2 text-3xl"
@@ -42,5 +44,6 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
 }
 
 export default GameCard;
+
 
 
