@@ -3,6 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray text-yellow font-jura h-full overflow-x-hidden;
+  @apply h-full overflow-x-hidden bg-gray font-jura text-yellow;
 }
-

@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { FaHeart } from 'react-icons/fa';
 
 function GameCard({ game, isFavourite, toggleFavourite }) {
   return (
@@ -9,13 +9,13 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
           <img
             src={game.image.url}
             alt={game.image.alt}
-            className="w-full h-80 object-cover rounded-xl mb-2 shadow-solid"
+            className="mb-2 h-80 w-full rounded-xl object-cover shadow-solid"
           />
         </Link>
 
         <button
           onClick={(e) => {
-            e.preventDefault(); 
+            e.preventDefault();
             toggleFavourite(game.id);
           }}
           className="absolute bottom-2 right-2 text-3xl"
@@ -29,13 +29,13 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
         </button>
       </div>
 
-      <h2 className=" font-press pt-4">{game.name}</h2>
+      <h2 className="pt-4 font-press">{game.name}</h2>
       <p>Year: {game.released}</p>
-      <p>Genre: {game.genre.join(", ")}</p>
+      <p>Genre: {game.genre.join(', ')}</p>
 
       <Link
         to={`/games/${game.id}`}
-        className="inline-block mt-4 border-2 border-purple rounded px-4 py-2 bg-yellow text-black text-sm shadow-btnsolid hover:bg-pink transition"
+        className="mt-4 inline-block rounded border-2 border-purple bg-yellow px-4 py-2 text-sm text-black shadow-btnsolid transition hover:bg-pink"
       >
         Read more
       </Link>
@@ -44,6 +44,3 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
 }
 
 export default GameCard;
-
-
-
