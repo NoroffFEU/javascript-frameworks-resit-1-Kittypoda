@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFavourites } from "../hooks/useFavourites";
 import GameCard from "../components/GameCard";
-import GameBoy from "../assets/gameboy.jpg";
 import { Link } from "react-router-dom";
 
 function HomePage() {
@@ -35,11 +34,11 @@ function HomePage() {
     return nameMatch || yearMatch;
   });
 
-  if (loading) return <p>Loading games...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className="px-4 md:px-20">Loading games...</p>;
+  if (error) return <p className="px-4 md:px-20">Error: {error}</p>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-[800px]">
 
       <input
         type="text"
@@ -58,7 +57,7 @@ function HomePage() {
 <h1 className="text-md pl-2  md:pl-20 pt-8">Game Library</h1>
 
       {filteredGames.length === 0 ? (
-        <p>No games found matching "{searchTerm}".</p>
+        <p className="px-4 md:px-20">No games found matching "{searchTerm}".</p>
       ) : (
         <div className=" px-2 md:px-20 py-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {filteredGames.map((game) => (

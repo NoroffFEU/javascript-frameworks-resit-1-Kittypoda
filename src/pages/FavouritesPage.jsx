@@ -27,11 +27,12 @@ function FavouritesPage() {
     fetchAllGames();
   }, [favourites]);
 
-  if (loading) return <p>Loading favourites...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (games.length === 0) return <p>You haven't added any favourites yet.</p>;
+  if (loading) return <p className="px-4 md:px-20">Loading favourites...</p>;
+  if (error) return <p className="px-4 md:px-20">Error: {error}</p>;
+  if (games.length === 0) return <p className="px-4 md:px-20">You haven't added any favourites yet.</p>;
 
   return (
+    <div className="min-h-[800px]">
     <div className="px-4 md:px-20 pt-10 pb-20">
       <h1 className="text-xl mb-4">My Favourites</h1>
       <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
@@ -45,6 +46,7 @@ function FavouritesPage() {
 ))}
 
       </div>
+    </div>
     </div>
   );
 }
