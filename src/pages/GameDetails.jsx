@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFavourites } from "../hooks/useFavourites";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 function GameDetails() {
   const { id } = useParams();
@@ -37,28 +37,29 @@ function GameDetails() {
     <div className="p-4 relative flex flex-col justify-center md:px-20 lg:px-56">
       <h1 className="text-4xl mb-2">{game.name}</h1>
 
-      <div className="relative">
-        <img
-          src={game.image.url}
-          alt={game.image.alt}
-          className="w-full md:h-[500px] object-cover mb-2 shadow-solid"
-        />
+      <div className="relative w-full max-w-[600px] aspect-[4/3] mb-2 shadow-solid">
+  <img
+    src={game.image.url}
+    alt={game.image.alt}
+    className="w-full h-full object-cover rounded-xl"
+  />
 
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            toggleFavourite(game.id);
-          }}
-          className="absolute bottom-5 right-3 text-3xl"
-          aria-label={`Toggle favourite for ${game.name}`}
-        >
-          {isFavourite(game.id) ? (
-            <FaHeart className="text-pink" />
-          ) : (
-            <FaHeart className="text-yellow hover:text-pink" />
-          )}
-        </button>
-      </div>
+  <button
+    onClick={(e) => {
+      e.preventDefault();
+      toggleFavourite(game.id);
+    }}
+    className="absolute bottom-4 right-4 text-3xl"
+    aria-label={`Toggle favourite for ${game.name}`}
+  >
+    {isFavourite(game.id) ? (
+      <FaHeart className="text-pink" />
+    ) : (
+      <FaHeart className="text-yellow hover:text-pink" />
+    )}
+  </button>
+</div>
+
 
       <p className="mb-2 pt-6">
         <strong>Year Released:</strong> {game.released}
@@ -66,7 +67,7 @@ function GameDetails() {
       <p className="mb-2">
         <strong>Genre:</strong> {game.genre.join(", ")}
       </p>
-      <p className="mb-4">
+      <p className="mb-4 max-w-[700px]">
         <strong>Description:</strong> {game.description}
       </p>
 
