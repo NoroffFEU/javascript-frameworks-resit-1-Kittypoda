@@ -47,7 +47,6 @@ This project was created as part of a resit assignment for the **JavaScript Fram
 ## 🌐API
 
 This app fetches data from the /old-games API endpoint provided for the assignment.
-You may need to configure an .env file with the API base URL if required.
 
 
 ## Author
