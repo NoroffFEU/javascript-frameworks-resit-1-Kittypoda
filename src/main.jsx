@@ -25,11 +25,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     },
     success: {
       icon: null, 
-      className: "bg-pink text-black border border-purple",
+      className: "bg-yellow text-black border-2 border-purple shadow-btnsolid",
     },
     error: {
       icon: null,
-      className: "bg-yellow text-black border border-purple",
+      className: "bg-pink text-black border-2 border-purple shadow-btnsolid",
     },
   }}
 />

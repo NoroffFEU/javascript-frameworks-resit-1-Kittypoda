@@ -9,7 +9,7 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
           <img
             src={game.image.url}
             alt={game.image.alt}
-            className="mb-2 h-80 w-full rounded-xl object-cover shadow-solid"
+            className="mb-2 h-80 w-full rounded-md object-cover shadow-solid"
           />
         </Link>
 
@@ -18,7 +18,7 @@ function GameCard({ game, isFavourite, toggleFavourite }) {
             e.preventDefault();
             toggleFavourite(game.id);
           }}
-          className="absolute bottom-4 right-4 rounded border border-yellow bg-gray p-2 text-xl shadow-btnsolid"
+          className="absolute bottom-6 right-6 rounded border border-yellow bg-gray p-2 text-xl shadow-btnsolid"
           aria-label={`Toggle favourite for ${game.name}`}
         >
           {isFavourite(game.id) ? (
