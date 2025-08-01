@@ -19,11 +19,11 @@ export default function LandingPage() {
         <img src={LevelJoy} alt="Gaming joystick" className="h-auto w-full" />
       </div>
 
-      <p className="my-8 text-lg md:text-xl">Ready to press start?</p>
+      <p className="my-4 text-lg md:text-xl">Ready to level up?</p>
 
       <button
         onClick={handleStart}
-        className="rounded border-2 border-purple bg-yellow px-6 py-3 text-lg font-bold text-black shadow-btnsolid transition hover:bg-pink"
+        className="rounded border-2 border-purple bg-yellow px-8 py-3 text-sm font-bold text-black shadow-btnsolid transition hover:bg-pink"
       >
         GAME ON
       </button>
