@@ -2,17 +2,19 @@ import { useEffect, useState } from 'react';
 import { useFavourites } from '../hooks/useFavourites';
 import GameCard from '../components/GameCard';
 import { Link } from 'react-router-dom';
+import { useLoader } from '../context/LoaderContext'; 
 
 function HomePage() {
   const [games, setGames] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
   const { toggleFavourite, isFavourite } = useFavourites();
+  const { setIsLoading } = useLoader(); // 👈 Bruk global loader
 
   useEffect(() => {
     async function fetchGames() {
+      setIsLoading(true); // 👈 Start loader
       try {
         const response = await fetch('https://v2.api.noroff.dev/old-games');
         if (!response.ok) throw new Error('Something went wrong with the API call');
@@ -21,12 +23,12 @@ function HomePage() {
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setIsLoading(false); // 👈 Slå av loader
       }
     }
 
     fetchGames();
-  }, []);
+  }, [setIsLoading]);
 
   const filteredGames = games.filter((game) => {
     const nameMatch = game.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -34,7 +36,6 @@ function HomePage() {
     return nameMatch || yearMatch;
   });
 
-  if (loading) return <p className="px-4 md:px-20">Loading games...</p>;
   if (error) return <p className="px-4 md:px-20">Error: {error}</p>;
 
   return (
@@ -74,3 +75,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

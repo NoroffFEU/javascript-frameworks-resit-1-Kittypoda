@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useFavourites } from '../hooks/useFavourites';
 import GameCard from '../components/GameCard';
+import { useLoader } from '../context/LoaderContext';
 
 function FavouritesPage() {
   const { favourites, toggleFavourite, isFavourite } = useFavourites();
   const [games, setGames] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { setIsLoading } = useLoader(); 
 
   useEffect(() => {
     async function fetchAllGames() {
+      setIsLoading(true);
       try {
         const response = await fetch('https://v2.api.noroff.dev/old-games');
         if (!response.ok) throw new Error('Failed to fetch games');
@@ -20,14 +22,13 @@ function FavouritesPage() {
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setIsLoading(false); 
       }
     }
 
     fetchAllGames();
-  }, [favourites]);
+  }, [favourites, setIsLoading]);
 
-  if (loading) return <p className="px-4 md:px-20">Loading favourites...</p>;
   if (error) return <p className="px-4 md:px-20">Error: {error}</p>;
   if (games.length === 0)
     return <p className="px-4 md:px-20">You haven't added any favourites yet.</p>;
@@ -52,3 +53,4 @@ function FavouritesPage() {
 }
 
 export default FavouritesPage;
+

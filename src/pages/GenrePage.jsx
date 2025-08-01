@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useFavourites } from '../hooks/useFavourites';
 import GameCard from '../components/GameCard';
+import { useLoader } from '../context/LoaderContext'; 
 
 function GenrePage() {
   const [games, setGames] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
   const { toggleFavourite, isFavourite } = useFavourites();
+  const { setIsLoading } = useLoader(); 
 
   useEffect(() => {
     async function fetchGames() {
+      setIsLoading(true); 
       try {
         const response = await fetch('https://v2.api.noroff.dev/old-games');
         if (!response.ok) throw new Error('API call failed');
@@ -20,12 +21,12 @@ function GenrePage() {
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setIsLoading(false); 
       }
     }
 
     fetchGames();
-  }, []);
+  }, [setIsLoading]);
 
   const allGenres = [...new Set(games.flatMap((game) => game.genre))];
 
@@ -33,7 +34,6 @@ function GenrePage() {
     ? games.filter((game) => game.genre.includes(selectedGenre))
     : games;
 
-  if (loading) return <p>Loading genres...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
@@ -77,3 +77,4 @@ function GenrePage() {
 }
 
 export default GenrePage;
+

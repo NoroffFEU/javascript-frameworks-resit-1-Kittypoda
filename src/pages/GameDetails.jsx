@@ -2,16 +2,18 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useFavourites } from '../hooks/useFavourites';
 import { FaHeart } from 'react-icons/fa';
+import { useLoader } from '../context/LoaderContext'; 
 
 function GameDetails() {
   const { id } = useParams();
   const [game, setGame] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const { toggleFavourite, isFavourite } = useFavourites();
+  const { setIsLoading } = useLoader();
 
   useEffect(() => {
     async function fetchGame() {
+      setIsLoading(true);
       try {
         const response = await fetch(`https://v2.api.noroff.dev/old-games/${id}`);
         if (!response.ok) throw new Error('Failed to fetch game details.');
@@ -20,14 +22,13 @@ function GameDetails() {
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     }
 
     fetchGame();
-  }, [id]);
+  }, [id, setIsLoading]);
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!game) return <p>Game not found.</p>;
 
@@ -57,7 +58,7 @@ function GameDetails() {
       </div>
 
       <h1 className="mb-2 pt-6 font-press text-xl">{game.name}</h1>
-      <p className="">
+      <p>
         <strong>Year Released:</strong> {game.released}
       </p>
       <p className="mb-2">
@@ -78,3 +79,4 @@ function GameDetails() {
 }
 
 export default GameDetails;
+

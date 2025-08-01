@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.font-retro {
+  font-family: 'Press Start 2P', monospace;
+}
+
+@keyframes dots {
+  0%   { content: "."; }
+  33%  { content: ".."; }
+  66%  { content: "..."; }
+  100% { content: "."; }
+}
+
+.loading-dots::after {
+  content: ".";
+  animation: dots 1s steps(3, end) infinite;
+}
+
+
+
+
 body {
   @apply h-full overflow-x-hidden bg-gray font-jura text-yellow;
 }
