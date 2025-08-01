@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 export function useFavourites() {
@@ -7,8 +8,11 @@ export function useFavourites() {
     return stored ? JSON.parse(stored) : [];
   });
 
+  const toastShownRef = useRef(false);
+
   useEffect(() => {
     localStorage.setItem('favourites', JSON.stringify(favourites));
+    toastShownRef.current = false; // Reset for neste endring
   }, [favourites]);
 
   function toggleFavourite(id) {
@@ -16,10 +20,11 @@ export function useFavourites() {
       const isAlreadyFavourite = prev.includes(id);
       const updated = isAlreadyFavourite ? prev.filter((fav) => fav !== id) : [...prev, id];
 
-      if (!arraysEqual(prev, updated)) {
+      if (!arraysEqual(prev, updated) && !toastShownRef.current) {
         toast[isAlreadyFavourite ? 'error' : 'success'](
           isAlreadyFavourite ? 'Removed from favourites' : 'Added to favourites'
         );
+        toastShownRef.current = true;
       }
 
       return updated;
